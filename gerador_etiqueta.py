@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from reportlab.pdfgen import canvas
 from reportlab.graphics.barcode import code128
+import os
 
 class EtiquetaPDF:
     ETIQUETA_LARGURA = 35 * 2.83465
@@ -173,8 +174,9 @@ class App:
         if not descricao or not cor or not referencia or not self.tamanhos_quantidades:
             messagebox.showwarning("Entrada Inválida", "Por favor, preencha todos os campos e selecione os tamanhos.")
             return
-
-        etiqueta_pdf = EtiquetaPDF('etiquetas.pdf')
+        
+        diretorio_atual = os.getcwd()
+        etiqueta_pdf = EtiquetaPDF(os.path.join(diretorio_atual, 'etiquetas.pdf'))
         etiqueta_pdf.set_descricao(descricao)
         etiqueta_pdf.set_cor(cor)
         etiqueta_pdf.set_referencia(referencia)
