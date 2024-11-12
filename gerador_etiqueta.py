@@ -46,18 +46,18 @@ class EtiquetaPDF:
         max_width = self.ETIQUETA_LARGURA - 10
         self.draw_multiline_text(self.descricao, x_offset + 7, self.height - 70, max_width)
 
-        self.draw_text('REF:', x_offset + 7, self.height - 90, font_size=9)
-        self.draw_text(referencia_com_tamanho, x_offset + 30, self.height - 90, font_size=11)
+        self.draw_text('REF:', x_offset + 7, self.height - 105, font_size=9)
+        self.draw_text(referencia_com_tamanho, x_offset + 30, self.height - 105, font_size=11)
 
-        self.draw_text('TAM:', x_offset + 7, self.height - 105, font_size=9)
-        self.draw_text(tamanho, x_offset + 30, self.height - 105, font_size=11)
+        self.draw_text('TAM:', x_offset + 7, self.height - 120, font_size=9)
+        self.draw_text(tamanho, x_offset + 30, self.height - 120, font_size=11)
 
-        self.draw_text('COR:', x_offset + 7, self.height - 120, font_size=9)
-        self.draw_text(self.cor, x_offset + 30, self.height - 120, font_size=11)
+        self.draw_text('COR:', x_offset + 7, self.height - 135, font_size=9)
+        self.draw_text(self.cor, x_offset + 30, self.height - 135, font_size=11)
 
         barcode = code128.Code128(referencia_com_tamanho)
         barcode.barWidth = self.mm2p(0.2)
-        barcode_height = self.mm2p(1)
+        barcode_height = self.mm2p(0.2)
         barcode_x_position = x_offset + (self.ETIQUETA_LARGURA - barcode.width) / 2
         barcode_y_position = self.height - 160
         barcode.drawOn(self.c, barcode_x_position, barcode_y_position)
